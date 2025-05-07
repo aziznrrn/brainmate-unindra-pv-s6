@@ -236,8 +236,22 @@ public class BrainMateGUIv2 extends javax.swing.JFrame {
     }
 
     private void openFrame(JFrame frame) {
-        frame.setLocationRelativeTo(this);
-        frame.setVisible(true);
+        // Create a modal dialog that contains the frame's content
+        JDialog dialog = new JDialog(this, frame.getTitle(), true);
+        dialog.setContentPane(frame.getContentPane());
+        dialog.setSize(frame.getSize());
+        dialog.setLocationRelativeTo(this);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        
+        // Add window listener to handle closing
+        dialog.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                frame.dispose();
+            }
+        });
+        
+        dialog.setVisible(true);
         setStatus("Opened: " + frame.getTitle());
     }
 
