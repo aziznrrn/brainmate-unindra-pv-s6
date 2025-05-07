@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package connection;
+package brainmateapp.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,3 +35,4 @@ public class DBConnection {
         return koneksi;
     }
 }
+
