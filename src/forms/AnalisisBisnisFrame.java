@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package brainmateapp.forms;
 
@@ -12,10 +12,10 @@ import java.awt.*;
  *
  * @author BMPC2024-8
  */
-public class AnalisisBisnisFrame extends JInternalFrame {
+public class AnalisisBisnisFrame extends JFrame {
 
     public AnalisisBisnisFrame() {
-        super("Analisis Bisnis", true, true, true, true);
+        super();
         setSize(500,300);
         setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
 
@@ -45,6 +45,9 @@ public class AnalisisBisnisFrame extends JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnGenerateChart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -109,4 +112,7 @@ public class AnalisisBisnisFrame extends JInternalFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
 

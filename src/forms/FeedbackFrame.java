@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package brainmateapp.forms;
 
@@ -11,9 +11,9 @@ import java.awt.*;
  *
  * @author BMPC2024-8
  */
-public class FeedbackFrame extends JInternalFrame {
+public class FeedbackFrame extends JFrame {
         public FeedbackFrame() {
-        super("Feedback & Keluhan", true, true, true, true);
+        super();
         setSize(500,350);
         setLayout(new BorderLayout(5,5));
 
@@ -44,6 +44,9 @@ public class FeedbackFrame extends JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -182,4 +185,7 @@ public class FeedbackFrame extends JInternalFrame {
     private javax.swing.JTextArea txtProduk;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
 

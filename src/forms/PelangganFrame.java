@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import javax.swing.table.DefaultTableModel;
 
-public class PelangganFrame extends javax.swing.JInternalFrame {
+public class PelangganFrame extends javax.swing.JFrame {
     
     public PelangganFrame() {
         initComponents();
@@ -74,6 +74,9 @@ public class PelangganFrame extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -368,4 +371,7 @@ public class PelangganFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
 

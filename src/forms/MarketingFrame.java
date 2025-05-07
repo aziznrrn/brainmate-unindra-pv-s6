@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package brainmateapp.forms;
 
@@ -16,7 +16,7 @@ import java.awt.*;
  *
  * @author BMPC2024-8
  */
-public class MarketingFrame extends JInternalFrame {
+public class MarketingFrame extends JFrame {
 
     public MarketingFrame() {
         initComponents();
@@ -60,6 +60,9 @@ public class MarketingFrame extends JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -242,4 +245,7 @@ public class MarketingFrame extends JInternalFrame {
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
 

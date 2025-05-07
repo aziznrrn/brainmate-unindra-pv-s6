@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package brainmateapp.forms;
 
@@ -12,9 +12,9 @@ import java.awt.*;
  *
  * @author BMPC2024-8
  */
-public class LapPelangganFrame extends JInternalFrame {
+public class LapPelangganFrame extends JFrame {
 public LapPelangganFrame() {
-        super("Laporan Pelanggan Aktif", true, true, true, true);
+        super();
         setSize(500,300);
         setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
 
@@ -37,6 +37,9 @@ public LapPelangganFrame() {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -126,4 +129,7 @@ public LapPelangganFrame() {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
+
+
+
 

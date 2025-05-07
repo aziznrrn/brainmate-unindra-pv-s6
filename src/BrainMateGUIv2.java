@@ -8,7 +8,6 @@ package brainmateapp;
 import brainmateapp.forms.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyVetoException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -18,7 +17,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class BrainMateGUIv2 extends javax.swing.JFrame {
 
-    private final JDesktopPane desktopPane = new JDesktopPane();
     private final JLabel statusBar = new JLabel("Ready");
     private final Color PRIMARY_COLOR = new Color(0, 120, 215);
     private final Color SECONDARY_COLOR = new Color(240, 240, 240);
@@ -40,12 +38,9 @@ public class BrainMateGUIv2 extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        desktopPane.setBackground(new Color(245, 245, 245));
-        desktopPane.add(createLandingPanel());
         
         add(createHeader(), BorderLayout.NORTH);
-        add(desktopPane, BorderLayout.CENTER);
+        add(createLandingPanel(), BorderLayout.CENTER);
         add(createStatusBar(), BorderLayout.SOUTH);
     }
 
@@ -66,18 +61,6 @@ public class BrainMateGUIv2 extends javax.swing.JFrame {
         exitButton.setForeground(Color.BLACK); // Change text color to black
         exitButton.addActionListener(e -> System.exit(0));
 
-        // Refresh button
-        JButton refreshButton = createStyledButton("Refresh", SECONDARY_COLOR);
-        refreshButton.setForeground(Color.BLACK); // Ensure consistency
-        refreshButton.addActionListener(e -> {
-            desktopPane.removeAll();
-            desktopPane.add(createLandingPanel());
-            desktopPane.revalidate();
-            desktopPane.repaint();
-            setStatus("Refreshed to main menu");
-        });
-
-        buttonPanel.add(refreshButton);
         buttonPanel.add(exitButton);
         header.add(title, BorderLayout.WEST);
         header.add(buttonPanel, BorderLayout.EAST);
@@ -173,33 +156,37 @@ public class BrainMateGUIv2 extends javax.swing.JFrame {
     }
 
     private void openSelectedForm(String category, String option) {
-        desktopPane.removeAll();
+        JFrame frame = null;
         
         switch (category) {
             case "Master Data":
-                if (option.equals("Pelanggan")) openFrame(new PelangganFrame());
-                else if (option.equals("Produk")) openFrame(new ProdukFrame());
-                else if (option.equals("Marketing")) openFrame(new MarketingFrame());
-                else if (option.equals("Kontak")) openFrame(new KontakFrame());
+                if (option.equals("Pelanggan")) frame = new PelangganFrame();
+                else if (option.equals("Produk")) frame = new ProdukFrame();
+                else if (option.equals("Marketing")) frame = new MarketingFrame();
+                else if (option.equals("Kontak")) frame = new KontakFrame();
                 break;
                 
             case "Transaksi":
-                if (option.equals("Pemesanan")) openFrame(new PemesananFrame());
-                else if (option.equals("Feedback")) openFrame(new FeedbackFrame());
+                if (option.equals("Pemesanan")) frame = new PemesananFrame();
+                else if (option.equals("Feedback")) frame = new FeedbackFrame();
                 break;
                 
             case "Laporan":
-                if (option.equals("Pelanggan")) openFrame(new LapPelangganFrame());
-                else if (option.equals("Penjualan")) openFrame(new LapPenjualanFrame());
-                else if (option.equals("Kinerja")) openFrame(new LapKinerjaFrame());
-                else if (option.equals("Feedback")) openFrame(new LapFeedbackFrame());
+                if (option.equals("Pelanggan")) frame = new LapPelangganFrame();
+                else if (option.equals("Penjualan")) frame = new LapPenjualanFrame();
+                else if (option.equals("Kinerja")) frame = new LapKinerjaFrame();
+                else if (option.equals("Feedback")) frame = new LapFeedbackFrame();
                 break;
                 
             case "Pengaturan":
-                if (option.equals("Manajemen Pengguna")) openFrame(new ManajemenPenggunaFrame());
-                else if (option.equals("Backup Data")) openFrame(new BackupDataFrame());
-                else if (option.equals("Analisis Bisnis")) openFrame(new AnalisisBisnisFrame());
+                if (option.equals("Manajemen Pengguna")) frame = new ManajemenPenggunaFrame();
+                else if (option.equals("Backup Data")) frame = new BackupDataFrame();
+                else if (option.equals("Analisis Bisnis")) frame = new AnalisisBisnisFrame();
                 break;
+        }
+        
+        if (frame != null) {
+            openFrame(frame);
         }
     }
 
@@ -248,15 +235,10 @@ public class BrainMateGUIv2 extends javax.swing.JFrame {
         statusBar.setText(message);
     }
 
-    private void openFrame(JInternalFrame f) {
-        desktopPane.add(f);
-        f.setVisible(true);
-        try {
-            f.setSelected(true);
-            setStatus("Opened: " + f.getTitle());
-        } catch (PropertyVetoException ex) {
-            ex.printStackTrace();
-        }
+    private void openFrame(JFrame frame) {
+        frame.setLocationRelativeTo(this);
+        frame.setVisible(true);
+        setStatus("Opened: " + frame.getTitle());
     }
 
     public static void main(String[] args) {
