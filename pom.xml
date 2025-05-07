@@ -16,11 +16,11 @@
     </properties>
 
     <dependencies>
-        <!-- JCalendar -->
+        <!-- LGoodDatePicker -->
         <dependency>
-            <groupId>com.toedter</groupId>
-            <artifactId>jcalendar</artifactId>
-            <version>1.4</version>
+            <groupId>com.github.lgooddatepicker</groupId>
+            <artifactId>LGoodDatePicker</artifactId>
+            <version>11.2.1</version>
         </dependency>
 
         <!-- MySQL Connector -->
@@ -43,6 +43,36 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>1.19.2</version>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                        <licenseHeader>
+                            <content>/*
+ * Copyright (c) 2025 BrainMateApp
+ * All rights reserved.
+ */</content>
+                        </licenseHeader>
+                        <importOrder>
+                            <order>java,javax,org,com,</order>
+                        </importOrder>
+                        <removeUnusedImports/>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -58,7 +88,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>brainmateapp.BrainMateGUIv2</mainClass>
+                            <mainClass>com.github.aziznrrn.brainmate.Main</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
@@ -69,7 +99,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>brainmateapp.BrainMateGUIv2</mainClass>
+                    <mainClass>com.github.aziznrrn.brainmate.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
