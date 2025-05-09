@@ -16,20 +16,45 @@ public class ManajemenPenggunaFrame extends JFrame {
 
   public ManajemenPenggunaFrame() {
     super();
-    setSize(600, 400);
-    setLayout(new BorderLayout(5, 5));
+    initComponents();
+    setupTable();
+    setupEventHandlers();
+  }
 
-    JTable tbl =
-        new JTable(new DefaultTableModel(new Object[] {"Username", "Role", "Nama Lengkap"}, 0));
-    add(new JScrollPane(tbl), BorderLayout.CENTER);
+  private void setupTable() {
+    String[] columnNames = {"ID", "Username", "Role", "Status"};
+    DefaultTableModel model = new DefaultTableModel(columnNames, 0);
+    jTable1.setModel(model);
+    jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+    jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+  }
 
-    JPanel bot = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-    bot.add(new JButton("Tambah"));
-    bot.add(new JButton("Ubah"));
-    bot.add(new JButton("Hapus"));
-    bot.add(new JButton("Reset Pwd"));
-    bot.add(new JButton("Tutup"));
-    add(bot, BorderLayout.SOUTH);
+  private void setupEventHandlers() {
+    btnTambahUser.addActionListener(e -> btnTambahUserActionPerformed(e));
+    btnUbahUser.addActionListener(e -> btnUbahUserActionPerformed(e));
+    btnHapusUser.addActionListener(e -> btnHapusUserActionPerformed(e));
+    btnResetPwd.addActionListener(e -> btnResetPwdActionPerformed(e));
+    btnTutup.addActionListener(e -> btnTutupActionPerformed(e));
+  }
+
+  private void btnTambahUserActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO: Implement add user functionality
+  }
+
+  private void btnUbahUserActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO: Implement edit user functionality
+  }
+
+  private void btnHapusUserActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO: Implement delete user functionality
+  }
+
+  private void btnResetPwdActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO: Implement reset password functionality
+  }
+
+  private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {
+    dispose();
   }
 
   /**
@@ -40,8 +65,7 @@ public class ManajemenPenggunaFrame extends JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    setTitle("Manajemen Pengguna");
 
     jPanel1 = new javax.swing.JPanel();
     jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,112 +76,101 @@ public class ManajemenPenggunaFrame extends JFrame {
     btnResetPwd = new javax.swing.JButton();
     btnTutup = new javax.swing.JButton();
 
+    jTable1.setModel(
+        new javax.swing.table.DefaultTableModel(
+            new Object[][] {
+              {null, null, null, null},
+              {null, null, null, null},
+              {null, null, null, null},
+              {null, null, null, null}
+            },
+            new String[] {"Title 1", "Title 2", "Title 3", "Title 4"}));
+    jScrollPane1.setViewportView(jTable1);
+
+    btnTambahUser.setText("Tambah User");
+    btnUbahUser.setText("Ubah User");
+    btnHapusUser.setText("Hapus User");
+    btnResetPwd.setText("Reset Password");
+    btnTutup.setText("Tutup");
+
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE));
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(
+                                jScrollPane1,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                600,
+                                Short.MAX_VALUE)
+                            .addGroup(
+                                jPanel1Layout
+                                    .createSequentialGroup()
+                                    .addComponent(btnTambahUser)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnUbahUser)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnHapusUser)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnResetPwd)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE)
+                                    .addComponent(btnTutup)))
+                    .addContainerGap()));
+
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 103, Short.MAX_VALUE));
-
-    jTable1.setModel(
-        new javax.swing.table.DefaultTableModel(
-            new Object[][] {
-              {null, null, null},
-              {null, null, null},
-              {null, null, null},
-              {null, null, null}
-            },
-            new String[] {"Username", "Role", "Nama"}));
-    jScrollPane1.setViewportView(jTable1);
-
-    btnTambahUser.setText("Tambah User");
-
-    btnUbahUser.setText("Ubah User");
-
-    btnHapusUser.setText("Hapus User");
-
-    btnResetPwd.setText("Reset Password");
-
-    btnTutup.setText("Tutup");
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(
+                        jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTambahUser)
+                            .addComponent(btnUbahUser)
+                            .addComponent(btnHapusUser)
+                            .addComponent(btnResetPwd)
+                            .addComponent(btnTutup))
+                    .addContainerGap()));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                layout
-                    .createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addComponent(btnTambahUser)
-                                    .addGap(53, 53, 53)
-                                    .addComponent(btnUbahUser)
-                                    .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        Short.MAX_VALUE)
-                                    .addComponent(btnHapusUser)
-                                    .addGap(60, 60, 60)
-                                    .addComponent(btnResetPwd)
-                                    .addGap(34, 34, 34)
-                                    .addComponent(btnTutup))
-                            .addComponent(
-                                jScrollPane1,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                665,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(
-                        jPanel1,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE)
-                    .addContainerGap()));
+            .addComponent(
+                jPanel1,
+                javax.swing.GroupLayout.DEFAULT_SIZE,
+                javax.swing.GroupLayout.DEFAULT_SIZE,
+                Short.MAX_VALUE));
     layout.setVerticalGroup(
         layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(
-                layout
-                    .createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(
-                                jScrollPane1,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                126,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(
-                                jPanel1,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(
-                                layout
-                                    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnTambahUser)
-                                    .addComponent(btnUbahUser))
-                            .addComponent(btnTutup)
-                            .addComponent(btnResetPwd)
-                            .addComponent(btnHapusUser))
-                    .addContainerGap(20, Short.MAX_VALUE)));
+            .addComponent(
+                jPanel1,
+                javax.swing.GroupLayout.DEFAULT_SIZE,
+                javax.swing.GroupLayout.DEFAULT_SIZE,
+                Short.MAX_VALUE));
 
     pack();
+    setLocationRelativeTo(null);
   } // </editor-fold>//GEN-END:initComponents
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

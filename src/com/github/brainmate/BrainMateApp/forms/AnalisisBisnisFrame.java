@@ -5,10 +5,9 @@
 package com.github.brainmate.BrainMateApp.forms;
 
 import java.awt.*;
+import java.util.Date;
 
 import javax.swing.*;
-
-import com.github.lgooddatepicker.components.DatePicker;
 
 /**
  * @author BMPC2024-8
@@ -17,28 +16,7 @@ public class AnalisisBisnisFrame extends JFrame {
 
   public AnalisisBisnisFrame() {
     super();
-    setSize(500, 300);
-    setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-
-    add(new JLabel("Dari:"));
-    add(new DatePicker());
-    add(new JLabel("Sampai:"));
-    add(new DatePicker());
-
-    add(new JLabel("Metric:"));
-    JComboBox<String> cbMetric =
-        new JComboBox<>(new String[] {"Total Penjualan", "Jumlah Pelanggan", "Rata-rata Feedback"});
-    add(cbMetric);
-
-    JButton btnShow = new JButton("Tampilkan Grafik");
-    JButton btnExp = new JButton("Export");
-    add(btnShow);
-    add(btnExp);
-
-    btnShow.addActionListener(
-        e -> {
-          /* render chart */
-        });
+    initComponents();
   }
 
   /**
@@ -48,27 +26,128 @@ public class AnalisisBisnisFrame extends JFrame {
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-    btnGenerateChart = new javax.swing.JButton();
+    jPanel1 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
+    spnFrom = new javax.swing.JSpinner();
     jLabel2 = new javax.swing.JLabel();
+    spnTo = new javax.swing.JSpinner();
     jLabel3 = new javax.swing.JLabel();
     jComboBox1 = new javax.swing.JComboBox<>();
+    btnGenerateChart = new javax.swing.JButton();
 
-    btnGenerateChart.setText("Tampilkan Grafik");
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    setTitle("Analisis Bisnis");
 
     jLabel1.setText("Tanggal");
+    spnFrom.setModel(
+        new javax.swing.SpinnerDateModel(new Date(), null, null, java.util.Calendar.DAY_OF_MONTH));
+    spnFrom.setEditor(new JSpinner.DateEditor(spnFrom, "dd/MM/yyyy"));
 
     jLabel2.setText("Sampai");
+    spnTo.setModel(
+        new javax.swing.SpinnerDateModel(new Date(), null, null, java.util.Calendar.DAY_OF_MONTH));
+    spnTo.setEditor(new JSpinner.DateEditor(spnTo, "dd/MM/yyyy"));
 
     jLabel3.setText("Metric");
 
     jComboBox1.setModel(
         new javax.swing.DefaultComboBoxModel<>(
             new String[] {"Total Penjualan", "Jumlah Pelanggan", "Rata-Rata Feedback"}));
+
+    btnGenerateChart.setText("Tampilkan Grafik");
+    btnGenerateChart.addActionListener(
+        new java.awt.event.ActionListener() {
+          public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnGenerateChartActionPerformed(evt);
+          }
+        });
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout
+            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(
+                                jPanel1Layout
+                                    .createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(
+                                        spnFrom,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        118,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(
+                                        spnTo,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        118,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(
+                                jPanel1Layout
+                                    .createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(
+                                        jComboBox1,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        200,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(
+                                btnGenerateChart,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                200,
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout
+            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(
+                                spnFrom,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(
+                                spnTo,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(
+                                jComboBox1,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnGenerateChart)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -79,73 +158,33 @@ public class AnalisisBisnisFrame extends JFrame {
                 layout
                     .createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addComponent(
-                                        jLabel1,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        65,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(194, 194, 194)
-                                    .addComponent(jLabel2))
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addComponent(
-                                        jLabel3,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        57,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(
-                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(
-                                        layout
-                                            .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(
-                                                btnGenerateChart,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE)
-                                            .addComponent(jComboBox1, 0, 417, Short.MAX_VALUE))))
-                    .addContainerGap(16, Short.MAX_VALUE)));
+                    .addComponent(
+                        jPanel1,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                        Short.MAX_VALUE)
+                    .addContainerGap()));
     layout.setVerticalGroup(
         layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(
                 layout
                     .createSequentialGroup()
-                    .addGap(14, 14, 14)
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                    .addGap(20, 20, 20)
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(
-                                jComboBox1,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
+                    .addContainerGap()
                     .addComponent(
-                        btnGenerateChart,
+                        jPanel1,
                         javax.swing.GroupLayout.PREFERRED_SIZE,
-                        34,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(19, Short.MAX_VALUE)));
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
     pack();
   } // </editor-fold>//GEN-END:initComponents
+
+  private void btnGenerateChartActionPerformed(
+      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnGenerateChartActionPerformed
+    // TODO: Add chart generation code here
+  } // GEN-LAST:event_btnGenerateChartActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnGenerateChart;
@@ -153,5 +192,8 @@ public class AnalisisBisnisFrame extends JFrame {
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
+  private javax.swing.JPanel jPanel1;
+  private javax.swing.JSpinner spnFrom;
+  private javax.swing.JSpinner spnTo;
   // End of variables declaration//GEN-END:variables
 }

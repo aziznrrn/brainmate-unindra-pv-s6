@@ -19,8 +19,6 @@ public class PelangganFrame extends javax.swing.JFrame {
     btnSearch.addActionListener(e -> btnSearchActionPerformed(e));
     btnUbah.addActionListener(e -> btnUbahActionPerformed(e));
     btnHapus.addActionListener(e -> btnHapusActionPerformed(e));
-    btnRefresh.addActionListener(e -> btnRefreshActionPerformed(e));
-    btnTutup.addActionListener(e -> btnTutupActionPerformed(e));
 
     String[] columnNames = {"ID", "No", "Name", "Email", "Phone", "Address", "Status"};
     DefaultTableModel model = new DefaultTableModel(columnNames, 0);
@@ -72,11 +70,6 @@ public class PelangganFrame extends javax.swing.JFrame {
     loadSearch();
   }
 
-  private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {
-    txtSearch.setText("");
-    loadAll();
-  }
-
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
@@ -94,8 +87,6 @@ public class PelangganFrame extends javax.swing.JFrame {
     btnTambah = new javax.swing.JButton();
     btnUbah = new javax.swing.JButton();
     btnHapus = new javax.swing.JButton();
-    btnRefresh = new javax.swing.JButton();
-    btnTutup = new javax.swing.JButton();
 
     jLabel1.setText("Cari:");
 
@@ -175,10 +166,6 @@ public class PelangganFrame extends javax.swing.JFrame {
           }
         });
 
-    btnRefresh.setText("Refresh");
-
-    btnTutup.setText("Tutup");
-
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -193,10 +180,6 @@ public class PelangganFrame extends javax.swing.JFrame {
                     .addComponent(btnUbah)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(btnHapus)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btnRefresh)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(btnTutup)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout
@@ -208,8 +191,6 @@ public class PelangganFrame extends javax.swing.JFrame {
                     .addGroup(
                         jPanel2Layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btnTutup)
-                            .addComponent(btnRefresh)
                             .addComponent(btnHapus)
                             .addComponent(btnUbah)
                             .addComponent(btnTambah))
@@ -427,16 +408,10 @@ public class PelangganFrame extends javax.swing.JFrame {
     }
   } // GEN-LAST:event_btnHapusActionPerformed
 
-  private void btnTutupActionPerformed(java.awt.event.ActionEvent evt) {
-    dispose();
-  }
-
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnHapus;
-  private javax.swing.JButton btnRefresh;
   private javax.swing.JButton btnSearch;
   private javax.swing.JButton btnTambah;
-  private javax.swing.JButton btnTutup;
   private javax.swing.JButton btnUbah;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JPanel jPanel1;

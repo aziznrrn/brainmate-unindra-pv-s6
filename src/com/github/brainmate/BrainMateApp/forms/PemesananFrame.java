@@ -4,45 +4,16 @@
  */
 package com.github.brainmate.BrainMateApp.forms;
 
-import java.awt.*;
-
 import javax.swing.*;
-
-import com.github.lgooddatepicker.components.DatePicker;
 
 /**
  * @author BMPC2024-8
  */
 public class PemesananFrame extends JFrame {
+
+  /** Creates new form PemesananFrame */
   public PemesananFrame() {
-    super();
-    setSize(500, 350);
-    setLayout(new GridLayout(5, 2, 5, 5));
-
-    add(new JLabel("Customer:"));
-    JComboBox<String> cbCust = new JComboBox<>();
-    add(cbCust);
-
-    add(new JLabel("Produk:"));
-    JComboBox<String> cbProd = new JComboBox<>();
-    add(cbProd);
-
-    add(new JLabel("Jumlah:"));
-    JSpinner spnQty = new JSpinner(new SpinnerNumberModel(1, 1, 1000, 1));
-    add(spnQty);
-
-    add(new JLabel("Tanggal:"));
-    DatePicker dc = new DatePicker();
-    add(dc);
-
-    JButton btnSave = new JButton("Simpan");
-    JButton btnStatus = new JButton("Ubah Status");
-    JButton btnClose = new JButton("Batal");
-    add(btnSave);
-    add(btnStatus);
-    add(btnClose);
-
-    btnClose.addActionListener(e -> dispose());
+    initComponents();
   }
 
   /**
@@ -53,8 +24,6 @@ public class PemesananFrame extends JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     jPanel1 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
@@ -64,26 +33,25 @@ public class PemesananFrame extends JFrame {
     jLabel3 = new javax.swing.JLabel();
     jLabel4 = new javax.swing.JLabel();
     spnQty = new javax.swing.JSpinner();
+    spnTanggal = new javax.swing.JSpinner(new javax.swing.SpinnerDateModel());
     btnSimpan = new javax.swing.JButton();
     btnUbahStatus = new javax.swing.JButton();
     btnBatal = new javax.swing.JButton();
-    dcTanggal = new com.github.lgooddatepicker.components.DatePicker();
 
     jLabel1.setText("Customer");
-
     cmbCustomer.setModel(
         new javax.swing.DefaultComboBoxModel<>(
             new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
 
     jLabel2.setText("Produk");
-
     cmbProduk.setModel(
         new javax.swing.DefaultComboBoxModel<>(
             new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
 
     jLabel3.setText("Jumlah");
-
     jLabel4.setText("Tanggal");
+
+    spnTanggal.setEditor(new JSpinner.DateEditor(spnTanggal, "dd/MM/yyyy"));
 
     btnSimpan.setText("Simpan");
     btnSimpan.addActionListener(
@@ -94,7 +62,6 @@ public class PemesananFrame extends JFrame {
         });
 
     btnUbahStatus.setText("Ubah Status");
-
     btnBatal.setText("Batal");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,11 +88,10 @@ public class PemesananFrame extends JFrame {
                                         javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(
                                         cmbCustomer,
-                                        0,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                         Short.MAX_VALUE))
                             .addGroup(
-                                javax.swing.GroupLayout.Alignment.TRAILING,
                                 jPanel1Layout
                                     .createSequentialGroup()
                                     .addComponent(
@@ -135,7 +101,11 @@ public class PemesananFrame extends JFrame {
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(
                                         javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cmbProduk, 0, 302, Short.MAX_VALUE))
+                                    .addComponent(
+                                        cmbProduk,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        302,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(
                                 jPanel1Layout
                                     .createSequentialGroup()
@@ -150,7 +120,6 @@ public class PemesananFrame extends JFrame {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(
                                                 jLabel4,
-                                                javax.swing.GroupLayout.Alignment.TRAILING,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 62,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,14 +129,17 @@ public class PemesananFrame extends JFrame {
                                         jPanel1Layout
                                             .createParallelGroup(
                                                 javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(spnQty)
                                             .addComponent(
-                                                dcTanggal,
+                                                spnQty,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                Short.MAX_VALUE)
+                                            .addComponent(
+                                                spnTanggal,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 Short.MAX_VALUE)))
                             .addGroup(
-                                javax.swing.GroupLayout.Alignment.TRAILING,
                                 jPanel1Layout
                                     .createSequentialGroup()
                                     .addComponent(
@@ -175,7 +147,8 @@ public class PemesananFrame extends JFrame {
                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                         99,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(36, 36, 36)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(
                                         btnUbahStatus,
                                         javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -201,22 +174,22 @@ public class PemesananFrame extends JFrame {
                     .addGroup(
                         jPanel1Layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
                             .addComponent(
                                 cmbCustomer,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(
                         jPanel1Layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
                             .addComponent(
                                 cmbProduk,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(
                         jPanel1Layout
@@ -230,21 +203,22 @@ public class PemesananFrame extends JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(
                         jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(
-                                dcTanggal,
+                                spnTanggal,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
+                    .addPreferredGap(
+                        javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                     .addGroup(
                         jPanel1Layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSimpan)
                             .addComponent(btnUbahStatus)
                             .addComponent(btnBatal))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+                    .addContainerGap()));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -278,10 +252,9 @@ public class PemesananFrame extends JFrame {
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
-  private void btnSimpanActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnSimpanActionPerformed
+  private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
-  } // GEN-LAST:event_btnSimpanActionPerformed
+  }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnBatal;
@@ -289,12 +262,12 @@ public class PemesananFrame extends JFrame {
   private javax.swing.JButton btnUbahStatus;
   private javax.swing.JComboBox<String> cmbCustomer;
   private javax.swing.JComboBox<String> cmbProduk;
-  private com.github.lgooddatepicker.components.DatePicker dcTanggal;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JSpinner spnQty;
+  private javax.swing.JSpinner spnTanggal;
   // End of variables declaration//GEN-END:variables
 }

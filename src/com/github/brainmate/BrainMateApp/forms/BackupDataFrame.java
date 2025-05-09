@@ -4,9 +4,8 @@
  */
 package com.github.brainmate.BrainMateApp.forms;
 
-import java.awt.*;
-
 import javax.swing.*;
+import javax.swing.SpinnerDateModel;
 
 /**
  * @author BMPC2024-8
@@ -15,18 +14,7 @@ public class BackupDataFrame extends JFrame {
 
   public BackupDataFrame() {
     super();
-    setSize(400, 200);
-    setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));
-
-    JButton btnNow = new JButton("Backup Sekarang");
-    JButton btnSched = new JButton("Atur Jadwal");
-    add(btnNow);
-    add(btnSched);
-
-    btnNow.addActionListener(
-        e -> {
-          /* do backup */
-        });
+    initComponents();
   }
 
   /**
@@ -37,27 +25,90 @@ public class BackupDataFrame extends JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
     jPanel1 = new javax.swing.JPanel();
-    btnBackupNow = new javax.swing.JButton();
-    btnAturJadwal = new javax.swing.JButton();
+    jLabel1 = new javax.swing.JLabel();
+    spnFrom = new javax.swing.JSpinner();
+    jLabel2 = new javax.swing.JLabel();
+    spnTo = new javax.swing.JSpinner();
+    btnBackup = new javax.swing.JButton();
+
+    jLabel1.setText("Tanggal");
+    SpinnerDateModel fromModel = new SpinnerDateModel();
+    spnFrom.setModel(fromModel);
+    spnFrom.setEditor(new JSpinner.DateEditor(spnFrom, "dd/MM/yyyy"));
+
+    jLabel2.setText("Sampai");
+    SpinnerDateModel toModel = new SpinnerDateModel();
+    spnTo.setModel(toModel);
+    spnTo.setEditor(new JSpinner.DateEditor(spnTo, "dd/MM/yyyy"));
+
+    btnBackup.setText("Backup Data");
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE));
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(
+                                jPanel1Layout
+                                    .createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(
+                                        spnFrom,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        118,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(
+                                        spnTo,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        118,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(
+                                btnBackup,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                200,
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
     jPanel1Layout.setVerticalGroup(
         jPanel1Layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 103, Short.MAX_VALUE));
-
-    btnBackupNow.setText("Backup Sekarang");
-
-    btnAturJadwal.setText("Atur Jadwal Backup");
+            .addGroup(
+                jPanel1Layout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(
+                        jPanel1Layout
+                            .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(
+                                spnFrom,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(
+                                spnTo,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnBackup)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -67,19 +118,7 @@ public class BackupDataFrame extends JFrame {
             .addGroup(
                 layout
                     .createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addComponent(
-                        btnBackupNow,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        141,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(
-                        btnAturJadwal,
-                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                        136,
-                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addContainerGap()
                     .addComponent(
                         jPanel1,
                         javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -92,44 +131,23 @@ public class BackupDataFrame extends JFrame {
             .addGroup(
                 layout
                     .createSequentialGroup()
-                    .addGroup(
-                        layout
-                            .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(
-                                        jPanel1,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(
-                                layout
-                                    .createSequentialGroup()
-                                    .addGap(34, 34, 34)
-                                    .addGroup(
-                                        layout
-                                            .createParallelGroup(
-                                                javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(
-                                                btnAturJadwal,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                50,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(
-                                                btnBackupNow,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                50,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap()
+                    .addComponent(
+                        jPanel1,
+                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                        javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
     pack();
   } // </editor-fold>//GEN-END:initComponents
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton btnAturJadwal;
-  private javax.swing.JButton btnBackupNow;
+  private javax.swing.JButton btnBackup;
+  private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
+  private javax.swing.JSpinner spnFrom;
+  private javax.swing.JSpinner spnTo;
   // End of variables declaration//GEN-END:variables
 }

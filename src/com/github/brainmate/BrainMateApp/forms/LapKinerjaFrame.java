@@ -4,11 +4,8 @@
  */
 package com.github.brainmate.BrainMateApp.forms;
 
-import java.awt.*;
-
 import javax.swing.*;
-
-import com.github.lgooddatepicker.components.DatePicker;
+import javax.swing.SpinnerDateModel;
 
 /**
  * @author BMPC2024-8
@@ -17,22 +14,7 @@ public class LapKinerjaFrame extends JFrame {
 
   public LapKinerjaFrame() {
     super();
-    setSize(500, 300);
-    setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
-
-    add(new JLabel("Dari:"));
-    add(new DatePicker());
-    add(new JLabel("Sampai:"));
-    add(new DatePicker());
-    JButton btnShow = new JButton("Tampilkan");
-    JButton btnExp = new JButton("Export");
-    add(btnShow);
-    add(btnExp);
-
-    btnShow.addActionListener(
-        e -> {
-          /* generate report */
-        });
+    initComponents();
   }
 
   /**
@@ -48,9 +30,13 @@ public class LapKinerjaFrame extends JFrame {
 
     jPanel1 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    dcFrom = new com.github.lgooddatepicker.components.DatePicker();
+    SpinnerDateModel fromModel = new SpinnerDateModel();
+    spnFrom = new JSpinner(fromModel);
+    spnFrom.setEditor(new JSpinner.DateEditor(spnFrom, "dd/MM/yyyy"));
     jLabel5 = new javax.swing.JLabel();
-    dcTo = new com.github.lgooddatepicker.components.DatePicker();
+    SpinnerDateModel toModel = new SpinnerDateModel();
+    spnTo = new JSpinner(toModel);
+    spnTo.setEditor(new JSpinner.DateEditor(spnTo, "dd/MM/yyyy"));
     btnGenerate = new javax.swing.JButton();
     btnExport = new javax.swing.JButton();
 
@@ -85,7 +71,7 @@ public class LapKinerjaFrame extends JFrame {
                                     .addPreferredGap(
                                         javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(
-                                        dcFrom,
+                                        spnFrom,
                                         javax.swing.GroupLayout.PREFERRED_SIZE,
                                         118,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,7 +85,7 @@ public class LapKinerjaFrame extends JFrame {
                                     .addPreferredGap(
                                         javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(
-                                        dcTo,
+                                        spnTo,
                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                         138,
                                         Short.MAX_VALUE))
@@ -137,12 +123,12 @@ public class LapKinerjaFrame extends JFrame {
                                                 javax.swing.GroupLayout.Alignment.CENTER)
                                             .addComponent(jLabel5)
                                             .addComponent(
-                                                dcFrom,
+                                                spnFrom,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(
-                                                dcTo,
+                                                spnTo,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -194,8 +180,8 @@ public class LapKinerjaFrame extends JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnExport;
   private javax.swing.JButton btnGenerate;
-  private com.github.lgooddatepicker.components.DatePicker dcFrom;
-  private com.github.lgooddatepicker.components.DatePicker dcTo;
+  private javax.swing.JSpinner spnFrom;
+  private javax.swing.JSpinner spnTo;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel5;
   private javax.swing.JPanel jPanel1;
