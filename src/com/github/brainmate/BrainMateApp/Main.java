@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.github.brainmate.BrainMateApp.forms.*;
 
 /**
@@ -22,22 +23,28 @@ public class Main extends javax.swing.JFrame {
   private final Color SECONDARY_COLOR = new Color(240, 240, 240);
   private final Color BUTTON_HOVER = new Color(0, 90, 180);
 
+  private JPanel headerPanel;
+  private JPanel landingPanel;
+  private JPanel statusPanel;
+  private JButton btnMaster;
+  private JButton btnTransaksi;
+  private JButton btnLaporan;
+  private JButton btnPengaturan;
+
   public Main() {
-    super("BrainMate CRM");
-    initUI();
-  }
-
-  private void initUI() {
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-    setSize(1080, 720);
-    setLocationRelativeTo(null);
-    setLayout(new BorderLayout());
-
     try {
-      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      UIManager.setLookAndFeel(new FlatLightLaf());
     } catch (Exception e) {
       e.printStackTrace();
     }
+    initComponents();
+    setupUI();
+  }
+
+  private void setupUI() {
+    setSize(1080, 720);
+    setLocationRelativeTo(null);
+    setLayout(new BorderLayout());
 
     add(createHeader(), BorderLayout.NORTH);
     add(createLandingPanel(), BorderLayout.CENTER);
@@ -45,9 +52,9 @@ public class Main extends javax.swing.JFrame {
   }
 
   private JPanel createHeader() {
-    JPanel header = new JPanel(new BorderLayout());
-    header.setBackground(PRIMARY_COLOR);
-    header.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
+    headerPanel = new JPanel(new BorderLayout());
+    headerPanel.setBackground(PRIMARY_COLOR);
+    headerPanel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
 
     JLabel title = new JLabel("BrainMate CRM");
     title.setFont(new Font("Segoe UI", Font.BOLD, 18));
@@ -56,41 +63,51 @@ public class Main extends javax.swing.JFrame {
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
     buttonPanel.setOpaque(false);
 
-    // Exit button with black text
     JButton exitButton = createStyledButton("Exit", SECONDARY_COLOR);
-    exitButton.setForeground(Color.BLACK); // Change text color to black
+    exitButton.setForeground(Color.BLACK);
     exitButton.addActionListener(e -> System.exit(0));
 
     buttonPanel.add(exitButton);
-    header.add(title, BorderLayout.WEST);
-    header.add(buttonPanel, BorderLayout.EAST);
+    headerPanel.add(title, BorderLayout.WEST);
+    headerPanel.add(buttonPanel, BorderLayout.EAST);
 
-    return header;
+    return headerPanel;
   }
 
   private JPanel createLandingPanel() {
-    JPanel panel = new JPanel(new BorderLayout());
-    panel.setBounds(0, 0, 1080, 720);
-    panel.setBackground(SECONDARY_COLOR);
-    panel.setBorder(new EmptyBorder(20, 20, 20, 20));
+    landingPanel = new JPanel(new BorderLayout());
+    landingPanel.setBounds(0, 0, 1080, 720);
+    landingPanel.setBackground(SECONDARY_COLOR);
+    landingPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-    // Welcome title
     JLabel welcomeLabel = new JLabel("Welcome to BrainMate CRM", SwingConstants.CENTER);
     welcomeLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
     welcomeLabel.setForeground(PRIMARY_COLOR);
     welcomeLabel.setBorder(BorderFactory.createEmptyBorder(2, 1, 4, 1));
-    panel.add(welcomeLabel, BorderLayout.NORTH);
+    landingPanel.add(welcomeLabel, BorderLayout.NORTH);
 
-    // Buttons in center - now in a 2x2 grid with smaller buttons
     JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 2, 2));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(100, 200, 300, 200));
     buttonPanel.setOpaque(false);
 
-    JButton btnMaster = createMainMenuButton("Master Data");
-    JButton btnTransaksi = createMainMenuButton("Transaksi");
-    JButton btnLaporan = createMainMenuButton("Laporan");
-    JButton btnPengaturan = createMainMenuButton("Pengaturan");
+    btnMaster = createMainMenuButton("Master Data");
+    btnTransaksi = createMainMenuButton("Transaksi");
+    btnLaporan = createMainMenuButton("Laporan");
+    btnPengaturan = createMainMenuButton("Pengaturan");
 
+    setupButtonListeners();
+
+    buttonPanel.add(btnMaster);
+    buttonPanel.add(btnTransaksi);
+    buttonPanel.add(btnLaporan);
+    buttonPanel.add(btnPengaturan);
+
+    landingPanel.add(buttonPanel, BorderLayout.CENTER);
+
+    return landingPanel;
+  }
+
+  private void setupButtonListeners() {
     btnMaster.addActionListener(
         e ->
             showSubMenu(
@@ -113,21 +130,14 @@ public class Main extends javax.swing.JFrame {
                 "Pengaturan",
                 new String[] {"Manajemen Pengguna", "Backup Data", "Analisis Bisnis"},
                 (JButton) e.getSource()));
-
-    buttonPanel.add(btnMaster);
-    buttonPanel.add(btnTransaksi);
-    buttonPanel.add(btnLaporan);
-    buttonPanel.add(btnPengaturan);
-
-    panel.add(buttonPanel, BorderLayout.CENTER);
-
-    return panel;
   }
 
   private JButton createMainMenuButton(String text) {
     JButton button = new JButton(text);
     button.setFont(new Font("Segoe UI", Font.PLAIN, 14));
     button.setFocusPainted(false);
+    button.setBackground(PRIMARY_COLOR);
+    button.setForeground(Color.WHITE);
 
     button.addMouseListener(
         new MouseAdapter() {
@@ -149,14 +159,12 @@ public class Main extends javax.swing.JFrame {
     JPopupMenu popupMenu = new JPopupMenu();
     popupMenu.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
 
-    // Add title to popup
     JMenuItem titleItem = new JMenuItem(category + " Menu");
     titleItem.setFont(new Font("Segoe UI", Font.BOLD, 12));
     titleItem.setEnabled(false);
     popupMenu.add(titleItem);
     popupMenu.addSeparator();
 
-    // Add menu items
     for (String option : options) {
       JMenuItem menuItem = new JMenuItem(option);
       menuItem.addActionListener(
@@ -167,7 +175,6 @@ public class Main extends javax.swing.JFrame {
       popupMenu.add(menuItem);
     }
 
-    // Show the popup relative to the button that was clicked
     popupMenu.show(invoker, 0, invoker.getHeight());
   }
 
@@ -234,7 +241,7 @@ public class Main extends javax.swing.JFrame {
   }
 
   private JPanel createStatusBar() {
-    JPanel statusPanel = new JPanel(new BorderLayout());
+    statusPanel = new JPanel(new BorderLayout());
     statusPanel.setBackground(new Color(230, 230, 230));
     statusPanel.setBorder(
         BorderFactory.createCompoundBorder(
@@ -253,14 +260,12 @@ public class Main extends javax.swing.JFrame {
   }
 
   private void openFrame(JFrame frame) {
-    // Create a modal dialog that contains the frame's content
     JDialog dialog = new JDialog(this, frame.getTitle(), true);
     dialog.setContentPane(frame.getContentPane());
     dialog.setSize(frame.getSize());
     dialog.setLocationRelativeTo(this);
     dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-    // Add window listener to handle closing
     dialog.addWindowListener(
         new WindowAdapter() {
           @Override
@@ -281,26 +286,21 @@ public class Main extends javax.swing.JFrame {
         });
   }
 
-  /**
-   * This method is called from within the constructor to initialize the form. WARNING: Do NOT
-   * modify this code. The content of this method is always regenerated by the Form Editor.
-   */
-  @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
-
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setTitle("BrainMate CRM");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE));
+            .addGap(0, 1080, Short.MAX_VALUE));
     layout.setVerticalGroup(
         layout
             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE));
+            .addGap(0, 720, Short.MAX_VALUE));
 
     pack();
   } // </editor-fold>//GEN-END:initComponents
