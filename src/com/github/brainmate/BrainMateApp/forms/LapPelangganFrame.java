@@ -4,8 +4,13 @@
  */
 package com.github.brainmate.BrainMateApp.forms;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.*;
 import javax.swing.SpinnerDateModel;
+
+import com.github.brainmate.BrainMateApp.util.JasperUtil;
 
 /**
  * @author BMPC2024-8
@@ -15,6 +20,7 @@ public class LapPelangganFrame extends JFrame {
   public LapPelangganFrame() {
     super();
     initComponents();
+    setupEventHandlers();
   }
 
   /**
@@ -166,5 +172,39 @@ public class LapPelangganFrame extends JFrame {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JSpinner spnFrom;
   private javax.swing.JSpinner spnTo;
+
   // End of variables declaration//GEN-END:variables
+
+  private void setupEventHandlers() {
+    btnGenerate.addActionListener(e -> btnGenerateActionPerformed(e));
+    btnExport.addActionListener(e -> btnExportActionPerformed(e));
+  }
+
+  private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+      String jrxmlPath = "src/com/github/brainmate/BrainMateApp/reports/customers.jrxml";
+      Map<String, Object> parameters = new HashMap<>();
+      JasperUtil.previewReport(jrxmlPath, parameters);
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(
+          this,
+          "Error generating report: " + e.getMessage(),
+          "Generation Error",
+          JOptionPane.ERROR_MESSAGE);
+    }
+  }
+
+  private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {
+    try {
+      String jrxmlPath = "src/com/github/brainmate/BrainMateApp/reports/customers.jrxml";
+      Map<String, Object> parameters = new HashMap<>();
+      JasperUtil.exportToPDF(jrxmlPath, "Customer Report", parameters);
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(
+          this,
+          "Error exporting report: " + e.getMessage(),
+          "Export Error",
+          JOptionPane.ERROR_MESSAGE);
+    }
+  }
 }
